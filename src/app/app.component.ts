@@ -1,12 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
     selector: 'app-root',
+    standalone: true,
     imports: [RouterOutlet],
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.scss',
+    template: '<router-outlet />',
 })
 export class AppComponent {
-    title = 'portafolio';
+    @HostListener('document:mousemove', ['$event'])
+    onMouseMove(e: MouseEvent) {
+        document.body.style.setProperty('--mx', `${e.clientX}px`);
+        document.body.style.setProperty('--my', `${e.clientY}px`);
+        console.log(e.clientX, e.clientY);
+    }
 }

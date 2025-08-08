@@ -1,0 +1,32 @@
+// 🎨 Paleta principal (modo oscuro)
+$bg-color: #0d0d0d; // Fondo principal
+$bg-color-alt: #1a1a1a; // Fondos secundarios / tarjetas
+$text-color: #f5f5f5; // Texto principal
+$text-muted: #a1a1a1; // Texto secundario
+$primary-color: #4cafef; // Color principal (botones, links activos)
+$primary-hover: #3a9dd8; // Hover del color principal
+$accent-color: #ffb74d; // Color de acento (destacar elementos)
+$border-color: #2a2a2a; // Bordes sutiles
+$error-color: #ef5350; // Errores / alertas
+$success-color: #66bb6a; // Éxito / confirmaciones
+$warning-color: #ffa726; // Advertencias
+
+// 🔤 Tipografía
+$font-family-base: "Poppins", system-ui, sans-serif;
+$font-family-heading: "Poppins", system-ui, sans-serif;
+
+// 📏 Espaciados
+$spacing-xs: 0.25rem; // 4px
+$spacing-sm: 0.5rem; // 8px
+$spacing-md: 1rem; // 16px
+$spacing-lg: 2rem; // 32px
+$spacing-xl: 4rem; // 64px
+
+// 🖼️ Bordes y sombras
+$radius-sm: 6px;
+$radius-md: 12px;
+$radius-lg: 20px;
+
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+$shadow-md: 0 4px 10px rgba(0, 0, 0, 0.4);
+$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
