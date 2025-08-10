@@ -1,21 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
 @use './app/shared/styles/_variables' as v;
 @use './app/shared/styles/_typography';
 
-/* Fondo base en gris */
 body {
   position: relative;
-  background-color: v.$bg-color; // si usas @use as v
+  background-color: v.$bg-color;
   background-image:
     repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 20px),
     repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 20px);
   overflow-x: hidden;
-}
-
-@property --phase {
-  syntax: "<length>";
-  initial-value: 0px;
-  inherits: false;
 }
 
 body::before {
@@ -35,17 +27,17 @@ body::before {
     magenta,
     red
   );
-
-  animation: rainbow-drift 2.5s ease-in-out infinite;
+  background-size: 30% 30%;
+  animation: rainbow-drift-diag 6s linear infinite;
   will-change: background-position;
 
   mask-image:
     radial-gradient(
-        circle 40px at var(--mx, 50%) var(--my, 50%),
-        rgba(0,0,0,1) 30%,
-        rgba(0,0,0,0.8) 60%,
-        rgba(0,0,0,0.4) 90%,
-        rgba(0,0,0,0) 100%
+      circle 40px at var(--mx, 50%) var(--my, 50%),
+      rgba(0,0,0,1) 30%,
+      rgba(0,0,0,0.8) 60%,
+      rgba(0,0,0,0.4) 90%,
+      rgba(0,0,0,0) 100%
     ),
     repeating-linear-gradient(0deg, transparent 0 19px, #000 19px 20px),
     repeating-linear-gradient(90deg, transparent 0 19px, #000 19px 20px);
@@ -53,23 +45,18 @@ body::before {
 
   -webkit-mask-image:
     radial-gradient(
-        circle 40px at var(--mx, 50%) var(--my, 50%),
-        rgba(0,0,0,1) 30%,
-        rgba(0,0,0,0.8) 60%,
-        rgba(0,0,0,0.4) 90%,
-        rgba(0,0,0,0) 100%
+      circle 40px at var(--mx, 50%) var(--my, 50%),
+      rgba(0,0,0,1) 30%,
+      rgba(0,0,0,0.8) 60%,
+      rgba(0,0,0,0.4) 90%,
+      rgba(0,0,0,0) 100%
     ),
     repeating-linear-gradient(0deg, transparent 0 19px, #000 19px 20px),
     repeating-linear-gradient(90deg, transparent 0 19px, #000 19px 20px);
   -webkit-mask-composite: source-in, xor;
 }
 
-@keyframes rainbow-drift {
-  from { --phase: 0px; }
-  to   { --phase: -1800px; }
+@keyframes rainbow-drift-diag {
+  from { background-position:   0%; }
+  to   { background-position: -87%; }
 }
-
-body::before {
-  background-position: var(--phase) 0;
-}
-
