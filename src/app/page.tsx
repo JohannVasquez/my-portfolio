@@ -15,16 +15,11 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen bg-[#0F1115]">
-      <Header />
+      <Header socialLinks={socialLinks} />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
         <section id="inicio" className="pt-16 scroll-mt-16">
           <Hero personalInfo={personalInfo} />
-        </section>
-
-        {/* Tech Stack Section */}
-        <section id="tecnologias" className="mb-16 pt-24 scroll-mt-24">
-          <SocialLinks links={socialLinks} />
         </section>
 
         {/* Projects Section */}
