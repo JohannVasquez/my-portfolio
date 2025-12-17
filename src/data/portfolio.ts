@@ -31,7 +31,7 @@ export async function getPersonalInfo(): Promise<PersonalInfo> {
         { name: 'Docker', icon: 'docker' },
       ],
       other: [
-        { name: 'C++', icon: 'c++', category: 'Programación competitiva' },
+        // { name: 'C++', icon: 'c++', category: 'Programación competitiva' },
       ],
     },
   };
