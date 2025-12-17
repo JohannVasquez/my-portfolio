@@ -101,7 +101,7 @@ export function Contact({ socialLinks, email }: ContactProps) {
               )}
               {link.platform === 'github' && (
                 <svg
-                  className="w-6 h-6 text-[#A1A1AA] group-hover:text-[#2DD4BF] transition-colors duration-200"
+                  className="w-8 h-8 text-[#A1A1AA] group-hover:text-[#2DD4BF] transition-colors duration-200"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"

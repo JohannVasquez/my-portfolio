@@ -88,7 +88,7 @@ export function Header({ socialLinks }: HeaderProps) {
                   )}
                   {link.platform === 'github' && (
                     <svg
-                      className="w-5 h-5"
+                      className="w-7 h-7"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                       aria-hidden="true"
