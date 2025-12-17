@@ -29,39 +29,41 @@ export function Contact({ socialLinks, email }: ContactProps) {
       </div>
 
       {/* Email con botón de copiar */}
-      <div className="mb-8 p-4 bg-[#181B23] rounded-lg flex items-center justify-between group hover:bg-[#1F2937] transition-all duration-200">
-        <div className="flex items-center gap-4">
-          <svg
-            className="w-6 h-6 text-[#A1A1AA]"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-            />
-          </svg>
-          <div>
-            <p className="text-[#EAEAEA] font-medium">Email</p>
-            <p className="text-[#A1A1AA] text-sm">{email}</p>
-          </div>
-        </div>
-        <div className="relative">
-          <button
-            onClick={handleCopy}
-            className="px-4 py-2 bg-[#2DD4BF]/10 text-[#2DD4BF] rounded-lg hover:bg-[#2DD4BF]/20 transition-colors duration-200 text-sm font-medium"
-          >
-            {copied ? 'Copiado!' : 'Copiar'}
-          </button>
-          {copied && (
-            <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-2 bg-[#0F1115] border border-[#2DD4BF] rounded-md whitespace-nowrap z-10 animate-fadeIn">
-              <span className="text-xs text-[#EAEAEA] font-medium">Correo copiado al portapapeles</span>
-              <div className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-[#2DD4BF]" />
+      <div className="mb-8 p-4 bg-[#181B23] rounded-lg group hover:bg-[#1F2937] transition-all duration-200">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
+            <svg
+              className="w-5 h-5 sm:w-6 sm:h-6 text-[#A1A1AA] flex-shrink-0"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+            <div className="min-w-0 flex-1">
+              <p className="text-[#EAEAEA] font-medium text-sm sm:text-base">Email</p>
+              <p className="text-[#A1A1AA] text-xs sm:text-sm truncate">{email}</p>
             </div>
-          )}
+          </div>
+          <div className="relative flex-shrink-0 sm:ml-4">
+            <button
+              onClick={handleCopy}
+              className="w-full sm:w-auto px-4 py-2 bg-[#2DD4BF]/10 text-[#2DD4BF] rounded-lg hover:bg-[#2DD4BF]/20 transition-colors duration-200 text-sm font-medium"
+            >
+              {copied ? 'Copiado!' : 'Copiar'}
+            </button>
+            {copied && (
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-2 bg-[#0F1115] border border-[#2DD4BF] rounded-md whitespace-nowrap z-10 animate-fadeIn">
+                <span className="text-xs text-[#EAEAEA] font-medium">Correo copiado al portapapeles</span>
+                <div className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-[#2DD4BF]" />
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
