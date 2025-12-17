@@ -3,8 +3,8 @@ import type { PersonalInfo, Project, SocialLink } from '@/domain/types/portfolio
 // Mock data - Replace with real data or fetch from API/Database
 export async function getPersonalInfo(): Promise<PersonalInfo> {
   return {
-    name: 'Tu Nombre',
-    role: 'Tu Oficio',
+    name: 'Johann Vasquez',
+    role: 'Software Engineer',
     yearsOfExperience: 0, // Cambia este valor
     technologies: {
       languages: [
