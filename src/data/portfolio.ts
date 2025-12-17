@@ -6,6 +6,34 @@ export async function getPersonalInfo(): Promise<PersonalInfo> {
     name: 'Tu Nombre',
     role: 'Tu Oficio',
     yearsOfExperience: 0, // Cambia este valor
+    technologies: {
+      languages: [
+        { name: 'Go', icon: 'go' },
+        { name: 'Python', icon: 'python' },
+        { name: 'JavaScript', icon: 'javascript' },
+        { name: 'TypeScript', icon: 'typescript' },
+        { name: 'SQL', icon: 'sql' },
+        { name: 'HTML', icon: 'html' },
+        { name: 'CSS', icon: 'css' },
+        { name: 'PHP', icon: 'php' },
+      ],
+      frameworks: [
+        { name: 'React Native', icon: 'react-native' },
+        { name: 'React', icon: 'react' },
+        { name: 'Next.js', icon: 'nextjs' },
+        { name: 'FastAPI', icon: 'fastapi' },
+        { name: 'gRPC', icon: 'grpc' },
+        { name: 'Laravel', icon: 'laravel' },
+      ],
+      tools: [
+        { name: 'Git', icon: 'git' },
+        { name: 'Postman', icon: 'postman' },
+        { name: 'Docker', icon: 'docker' },
+      ],
+      other: [
+        { name: 'C++', icon: 'c++', category: 'Programación competitiva' },
+      ],
+    },
   };
 }
 

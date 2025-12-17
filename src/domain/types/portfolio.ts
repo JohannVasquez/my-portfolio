@@ -3,6 +3,20 @@ export interface PersonalInfo {
   name: string;
   role: string;
   yearsOfExperience: number;
+  technologies?: TechStack;
+}
+
+export interface TechStack {
+  languages: Technology[];
+  frameworks: Technology[];
+  tools: Technology[];
+  other?: Technology[];
+}
+
+export interface Technology {
+  name: string;
+  icon: string; // Icon identifier from react-icons
+  category?: string;
 }
 
 export interface SocialLink {
