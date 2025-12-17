@@ -10,6 +10,7 @@
     "format": "biome format --write"
   },
   "dependencies": {
+    "@iconify/react": "^6.0.2",
     "next": "16.0.10",
     "react": "19.2.1",
     "react-dom": "19.2.1",
