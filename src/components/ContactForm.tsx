@@ -41,7 +41,7 @@ export function ContactForm() {
     }
 
     try {
-      // Obtener token de reCAPTCHA v3
+      // Obtener token de reCAPTCHA v3 (OBLIGATORIO)
       let recaptchaToken = '';
       if (typeof window !== 'undefined' && (window as any).grecaptcha) {
         try {
@@ -51,9 +51,22 @@ export function ContactForm() {
           );
         } catch (error) {
           console.error('❌ Error al obtener token de reCAPTCHA:', error);
+          setStatus('error');
+          setErrorMessage('Error de seguridad: No se pudo verificar reCAPTCHA. Por favor, recarga la página.');
+          return;
         }
       } else {
-        console.warn('⚠️ reCAPTCHA no disponible (grecaptcha no cargado)');
+        console.error('❌ reCAPTCHA no disponible (grecaptcha no cargado)');
+        setStatus('error');
+        setErrorMessage('Error de seguridad: reCAPTCHA no está disponible. Por favor, recarga la página.');
+        return;
+      }
+
+      // Validar que se obtuvo el token
+      if (!recaptchaToken) {
+        setStatus('error');
+        setErrorMessage('Error de seguridad: No se pudo obtener el token de verificación.');
+        return;
       }
 
       const response = await fetch('/api/contact', {

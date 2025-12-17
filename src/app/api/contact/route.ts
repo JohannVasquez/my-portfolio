@@ -80,36 +80,54 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { name, email, message, honeypot, recaptchaToken } = body;
 
-    // Verificar reCAPTCHA v3 si está configurado
-    if (process.env.RECAPTCHA_SECRET_KEY && recaptchaToken) {
-      try {
-        const recaptchaResponse = await fetch(
-          'https://www.google.com/recaptcha/api/siteverify',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
-          }
-        );
+    // Verificar reCAPTCHA v3 (OBLIGATORIO)
+    if (!process.env.RECAPTCHA_SECRET_KEY) {
+      console.error('❌ RECAPTCHA_SECRET_KEY no configurado en el servidor');
+      return NextResponse.json(
+        { error: 'Error de configuración del servidor. Contacto temporalmente no disponible.' },
+        { status: 500 }
+      );
+    }
 
-        const recaptchaData = await recaptchaResponse.json();
+    if (!recaptchaToken) {
+      console.error('❌ Token de reCAPTCHA no recibido');
+      return NextResponse.json(
+        { error: 'Token de verificación requerido. Por favor, recarga la página.' },
+        { status: 400 }
+      );
+    }
 
-        // Score de 0.0 a 1.0 (mayor = más humano)
-        // Rechazar si el score es menor a 0.5
-        if (!recaptchaData.success || recaptchaData.score < 0.5) {
-          return NextResponse.json(
-            { error: 'Verificación de seguridad fallida. Por favor, intenta nuevamente.' },
-            { status: 403 }
-          );
+    try {
+      const recaptchaResponse = await fetch(
+        'https://www.google.com/recaptcha/api/siteverify',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
         }
-      } catch (error) {
-        console.error('❌ Error al verificar reCAPTCHA:', error);
-        // Continuar sin bloquear si hay error en la verificación
+      );
+
+      const recaptchaData = await recaptchaResponse.json();
+
+      // Score de 0.0 a 1.0 (mayor = más humano)
+      // Rechazar si el score es menor a 0.5
+      if (!recaptchaData.success || recaptchaData.score < 0.5) {
+        console.error('❌ reCAPTCHA verificación fallida:', recaptchaData);
+        return NextResponse.json(
+          { error: 'Verificación de seguridad fallida. Por favor, intenta nuevamente.' },
+          { status: 403 }
+        );
       }
-    } else {
-      console.warn('⚠️ reCAPTCHA no configurado o token no recibido');
+
+      console.log('✅ reCAPTCHA verificado exitosamente. Score:', recaptchaData.score);
+    } catch (error) {
+      console.error('❌ Error al verificar reCAPTCHA:', error);
+      return NextResponse.json(
+        { error: 'Error al verificar la seguridad. Por favor, intenta nuevamente.' },
+        { status: 500 }
+      );
     }
 
     // Honeypot: si viene con valor, es un bot
