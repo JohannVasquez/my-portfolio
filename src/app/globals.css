@@ -23,7 +23,11 @@ body {
 
 body {
   color: var(--text-primary);
-  background: var(--bg-primary);
+  background-color: #0F1115;
+  background-image: 
+    linear-gradient(rgba(212, 45, 53, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 212, 191, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

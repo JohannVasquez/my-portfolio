@@ -14,7 +14,7 @@ export default async function Home() {
   ]);
 
   return (
-    <div className="min-h-screen bg-[#0F1115]">
+    <div className="min-h-screen">
       <Header socialLinks={socialLinks} />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
