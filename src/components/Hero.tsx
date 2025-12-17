@@ -35,7 +35,7 @@ export function Hero({ personalInfo }: HeroProps) {
           </p>
           <div className="text-[#A1A1AA] space-y-2 max-w-2xl">
             <p>
-              Egresado de la Universidad Técnica Federico Santa María. Me destaco principalmente en Next.js, Express y PostgreSQL, 
+              Estudiante de último semestre en la Universidad Técnica Federico Santa María. Me destaco principalmente en Next.js, Express y PostgreSQL, 
               con capacidad de adaptación a cualquier tecnología o framework.
             </p>
             <p className="text-[#5EEAD4]">
