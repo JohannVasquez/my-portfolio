@@ -1,3 +1,4 @@
+import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { SocialLinks } from '@/components/SocialLinks';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
@@ -14,17 +15,20 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen bg-[#0F1115]">
+      <Header />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
-        <Hero personalInfo={personalInfo} />
+        <section id="inicio" className="pt-16 scroll-mt-16">
+          <Hero personalInfo={personalInfo} />
+        </section>
 
-        {/* Social Links */}
-        <div className="mb-16">
+        {/* Tech Stack Section */}
+        <section id="tecnologias" className="mb-16 pt-24 scroll-mt-24">
           <SocialLinks links={socialLinks} />
-        </div>
+        </section>
 
         {/* Projects Section */}
-        <section className="mb-24">
+        <section id="proyectos" className="mb-24 scroll-mt-16">
           <h2 className="text-3xl font-bold text-[#EAEAEA] mb-8">
             Proyectos
           </h2>
@@ -32,7 +36,9 @@ export default async function Home() {
         </section>
 
         {/* Contact Section */}
-        <Contact socialLinks={socialLinks} />
+        <section id="contacto" className="scroll-mt-16">
+          <Contact socialLinks={socialLinks} />
+        </section>
       </main>
     </div>
   );
