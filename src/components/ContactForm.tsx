@@ -38,12 +38,10 @@ export function ContactForm() {
       let recaptchaToken = '';
       if (typeof window !== 'undefined' && (window as any).grecaptcha) {
         try {
-          console.log('🔒 Obteniendo token de reCAPTCHA...');
           recaptchaToken = await (window as any).grecaptcha.execute(
             process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
             { action: 'submit_contact' }
           );
-          console.log('✅ Token de reCAPTCHA obtenido:', recaptchaToken.substring(0, 20) + '...');
         } catch (error) {
           console.error('❌ Error al obtener token de reCAPTCHA:', error);
         }
