@@ -1,6 +1,5 @@
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
-import { SocialLinks } from '@/components/SocialLinks';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
 import { Contact } from '@/components/Contact';
 import { getPersonalInfo, getSocialLinks, getProjects } from '@/data/portfolio';
