@@ -83,7 +83,6 @@ export async function POST(request: Request) {
     // Verificar reCAPTCHA v3 si está configurado
     if (process.env.RECAPTCHA_SECRET_KEY && recaptchaToken) {
       try {
-        console.log('🔒 Verificando reCAPTCHA...');
         const recaptchaResponse = await fetch(
           'https://www.google.com/recaptcha/api/siteverify',
           {
@@ -96,23 +95,15 @@ export async function POST(request: Request) {
         );
 
         const recaptchaData = await recaptchaResponse.json();
-        console.log('📊 reCAPTCHA resultado:', {
-          success: recaptchaData.success,
-          score: recaptchaData.score,
-          action: recaptchaData.action,
-          hostname: recaptchaData.hostname,
-        });
 
         // Score de 0.0 a 1.0 (mayor = más humano)
         // Rechazar si el score es menor a 0.5
         if (!recaptchaData.success || recaptchaData.score < 0.5) {
-          console.log('❌ reCAPTCHA fail - Score:', recaptchaData.score);
           return NextResponse.json(
             { error: 'Verificación de seguridad fallida. Por favor, intenta nuevamente.' },
             { status: 403 }
           );
         }
-        console.log('✅ reCAPTCHA pass - Score:', recaptchaData.score);
       } catch (error) {
         console.error('❌ Error al verificar reCAPTCHA:', error);
         // Continuar sin bloquear si hay error en la verificación
