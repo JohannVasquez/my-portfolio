@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 const MAX_NAME_LENGTH = 100;
+const MAX_EMAIL_LENGTH = 254;
 const MAX_MESSAGE_LENGTH = 2000;
 
 export function ContactForm() {
@@ -24,6 +25,12 @@ export function ContactForm() {
     if (formData.name.length > MAX_NAME_LENGTH) {
       setStatus('error');
       setErrorMessage(`El nombre no puede exceder ${MAX_NAME_LENGTH} caracteres`);
+      return;
+    }
+
+    if (formData.email.length > MAX_EMAIL_LENGTH) {
+      setStatus('error');
+      setErrorMessage(`El email no puede exceder ${MAX_EMAIL_LENGTH} caracteres`);
       return;
     }
 
@@ -128,9 +135,13 @@ export function ContactForm() {
           value={formData.email}
           onChange={handleChange}
           required
+          maxLength={MAX_EMAIL_LENGTH}
           className="w-full px-4 py-3 bg-[#181B23] border border-[#2DD4BF]/20 rounded-lg text-[#EAEAEA] placeholder-[#A1A1AA] focus:outline-none focus:ring-2 focus:ring-[#2DD4BF] focus:border-transparent transition-all duration-200"
           placeholder="tu@email.com"
         />
+        <p className="text-xs text-[#A1A1AA] mt-1">
+          {formData.email.length}/{MAX_EMAIL_LENGTH}
+        </p>
       </div>
 
       <div>
