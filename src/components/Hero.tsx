@@ -1,6 +1,7 @@
 import type { PersonalInfo } from '@/domain/types/portfolio';
 import { TechStack } from './TechStack';
 import Image from 'next/image';
+import { formatYearsOfExperience } from '@/utils/date';
 
 interface HeroProps {
   personalInfo: PersonalInfo;
@@ -30,7 +31,7 @@ export function Hero({ personalInfo }: HeroProps) {
           </h1>
           <p className="text-xl md:text-2xl text-[#2DD4BF] mb-2">{role}</p>
           <p className="text-[#A1A1AA] text-lg mb-4">
-            {yearsOfExperience} {yearsOfExperience === 1 ? 'año' : 'años'} de experiencia
+            {formatYearsOfExperience(yearsOfExperience)} de experiencia
           </p>
           <div className="text-[#A1A1AA] space-y-2 max-w-2xl">
             <p>

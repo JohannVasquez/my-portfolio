@@ -1,4 +1,5 @@
 import type { PersonalInfo, Project, SocialLink } from '@/domain/types/portfolio';
+import { calculateYearsOfExperience } from '@/utils/date';
 
 // Mock data - Replace with real data or fetch from API/Database
 export async function getPersonalInfo(): Promise<PersonalInfo> {
@@ -6,7 +7,7 @@ export async function getPersonalInfo(): Promise<PersonalInfo> {
     name: 'Johann Vasquez',
     role: 'Software Engineer',
     email: 'johannvasquez101@gmail.com',
-    yearsOfExperience: 1, // Cambia este valor
+    yearsOfExperience: calculateYearsOfExperience('2025-01-01'), // Calculado dinámicamente desde enero 2025
     technologies: {
       languages: [
         { name: 'Go', icon: 'go' },
