@@ -118,7 +118,7 @@ export function Contact({ socialLinks, email }: ContactProps) {
                   {link.platform}
                 </p>
                 <p className="text-[#A1A1AA] text-sm">
-                  {link.platform === 'linkedin' ? 'LinkedIn' : 'GitHub'}
+                  {link.username || `Visita mi perfil de ${link.platform}`}
                 </p>
               </div>
             </a>

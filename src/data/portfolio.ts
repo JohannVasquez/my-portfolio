@@ -46,13 +46,15 @@ export async function getSocialLinks(): Promise<SocialLink[]> {
   return [
     {
       platform: 'linkedin',
-      url: 'https://www.linkedin.com/in/johann-vasquez-bello/', // Cambia este URL
+      url: 'https://www.linkedin.com/in/johann-vasquez-bello/',
       ariaLabel: 'Visita mi perfil de LinkedIn',
+      username: '@johann-vasquez-bello',
     },
     {
       platform: 'github',
-      url: 'https://github.com/JohannVasquez', // Cambia este URL
+      url: 'https://github.com/JohannVasquez',
       ariaLabel: 'Visita mi perfil de GitHub',
+      username: '@JohannVasquez',
     },
   ];
 }

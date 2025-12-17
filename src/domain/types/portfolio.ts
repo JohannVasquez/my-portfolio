@@ -25,6 +25,7 @@ export interface SocialLink {
   platform: 'linkedin' | 'github';
   url: string;
   ariaLabel: string;
+  username?: string;
 }
 
 export interface Project {

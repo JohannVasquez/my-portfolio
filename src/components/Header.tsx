@@ -45,19 +45,19 @@ export function Header({ socialLinks }: HeaderProps) {
           {/* Logo */}
           <button
             onClick={() => scrollToSection('inicio')}
-            className="text-xl font-bold text-[#2DD4BF] hover:text-[#5EEAD4] transition-colors duration-200"
+            className="text-xl font-bold text-[#2DD4BF] hover:text-[#5EEAD4] transition-colors duration-200 flex-shrink-0"
           >
             JV
           </button>
 
           {/* Navigation Links */}
-          <div className="flex items-center gap-8">
-            <ul className="flex items-center gap-8">
+          <div className="flex items-center gap-3 sm:gap-6 lg:gap-8">
+            <ul className="flex items-center gap-3 sm:gap-6 lg:gap-8">
               {navItems.map((item) => (
                 <li key={item.id}>
                   <button
                     onClick={() => scrollToSection(item.id)}
-                    className="text-[#A1A1AA] hover:text-[#2DD4BF] transition-colors duration-200 font-medium"
+                    className="text-[#A1A1AA] hover:text-[#2DD4BF] transition-colors duration-200 font-medium text-sm sm:text-base"
                   >
                     {item.label}
                   </button>
@@ -66,7 +66,7 @@ export function Header({ socialLinks }: HeaderProps) {
             </ul>
 
             {/* Social Icons */}
-            <div className="flex items-center gap-4 border-l border-[#2DD4BF]/20 pl-8">
+            <div className="flex items-center gap-3 sm:gap-4 border-l border-[#2DD4BF]/20 pl-3 sm:pl-6 lg:pl-8">
               {socialLinks.map((link) => (
                 <a
                   key={link.platform}
@@ -88,7 +88,7 @@ export function Header({ socialLinks }: HeaderProps) {
                   )}
                   {link.platform === 'github' && (
                     <svg
-                      className="w-7 h-7"
+                      className="w-5 h-5 sm:w-6 sm:h-6"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                       aria-hidden="true"
