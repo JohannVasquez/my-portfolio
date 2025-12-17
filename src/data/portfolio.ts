@@ -5,6 +5,7 @@ export async function getPersonalInfo(): Promise<PersonalInfo> {
   return {
     name: 'Johann Vasquez',
     role: 'Software Engineer',
+    email: 'johannvasquez101@gmail.com',
     yearsOfExperience: 1, // Cambia este valor
     technologies: {
       languages: [

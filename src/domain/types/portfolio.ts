@@ -2,6 +2,7 @@
 export interface PersonalInfo {
   name: string;
   role: string;
+  email: string;
   yearsOfExperience: number;
   technologies?: TechStack;
 }

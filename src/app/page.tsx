@@ -32,7 +32,7 @@ export default async function Home() {
 
         {/* Contact Section */}
         <section id="contacto" className="scroll-mt-16">
-          <Contact socialLinks={socialLinks} />
+          <Contact socialLinks={socialLinks} email={personalInfo.email} />
         </section>
       </main>
     </div>
