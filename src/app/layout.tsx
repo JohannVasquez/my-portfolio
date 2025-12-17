@@ -14,20 +14,29 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portafolio - Desarrollador Full Stack",
-  description: "Portafolio profesional de desarrollador con experiencia en desarrollo web moderno. Explora mis proyectos y habilidades.",
+  title: "Portafolio - Software Engineer",
+  description: "Portafolio de desarrollador con experiencia en desarrollo web moderno. Explora mis proyectos y habilidades.",
   keywords: ["desarrollador", "portafolio", "web developer", "full stack", "react", "next.js"],
-  authors: [{ name: "Tu Nombre" }],
+  authors: [{ name: "Johann Vasquez" }],
   openGraph: {
-    title: "Portafolio - Desarrollador Full Stack",
+    title: "Portafolio - Software Engineer",
     description: "Portafolio profesional de desarrollador con experiencia en desarrollo web moderno.",
     type: "website",
     locale: "es_ES",
+    images: [
+      {
+        url: '/og-image.svg',
+        width: 1200,
+        height: 630,
+        alt: 'JV - Portafolio Software Engineer',
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portafolio - Desarrollador Full Stack",
+    title: "Portafolio - Software Engineer",
     description: "Portafolio profesional de desarrollador con experiencia en desarrollo web moderno.",
+    images: ['/og-image.svg'],
   },
 };
 
