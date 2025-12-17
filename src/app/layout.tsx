@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Johann Vasquez" }],
   openGraph: {
     title: "Portafolio - Software Engineer",
-    description: "Portafolio profesional de desarrollador con experiencia en desarrollo web moderno.",
+    description: "Portafolio de desarrollador con experiencia en desarrollo web moderno.",
     type: "website",
     locale: "es_ES",
     images: [
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Portafolio - Software Engineer",
-    description: "Portafolio profesional de desarrollador con experiencia en desarrollo web moderno.",
+    description: "Portafolio de desarrollador con experiencia en desarrollo web moderno.",
     images: ['/og-image.svg'],
   },
 };
