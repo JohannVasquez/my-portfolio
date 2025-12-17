@@ -13,7 +13,6 @@ const iconMap: Record<string, string> = {
   python: 'logos:python',
   javascript: 'logos:javascript',
   typescript: 'logos:typescript-icon',
-  sql: 'logos:mysql',
   html: 'logos:html-5',
   css: 'logos:css-3',
   php: 'logos:php',
@@ -26,6 +25,9 @@ const iconMap: Record<string, string> = {
   git: 'logos:git-icon',
   postman: 'logos:postman-icon',
   docker: 'logos:docker-icon',
+  mysql: 'logos:mysql',
+  postgresql: 'logos:postgresql',
+  mongodb: 'logos:mongodb-icon',
   'c++': 'logos:c-plusplus',
 };
 
@@ -89,6 +91,7 @@ export function TechStack({ technologies }: TechStackProps) {
   const sections = [
     { title: 'Lenguajes', items: technologies.languages },
     { title: 'Tecnologías', items: technologies.frameworks },
+    { title: 'Bases de datos', items: technologies.databases || [] },
     { title: 'Herramientas', items: technologies.tools },
   ];
 

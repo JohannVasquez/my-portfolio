@@ -10,6 +10,7 @@ export interface TechStack {
   languages: Technology[];
   frameworks: Technology[];
   tools: Technology[];
+  databases?: Technology[];
   other?: Technology[];
 }
 

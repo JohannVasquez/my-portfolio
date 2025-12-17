@@ -12,7 +12,6 @@ export async function getPersonalInfo(): Promise<PersonalInfo> {
         { name: 'Python', icon: 'python' },
         { name: 'JavaScript', icon: 'javascript' },
         { name: 'TypeScript', icon: 'typescript' },
-        { name: 'SQL', icon: 'sql' },
         { name: 'HTML', icon: 'html' },
         { name: 'CSS', icon: 'css' },
         { name: 'PHP', icon: 'php' },
@@ -29,6 +28,11 @@ export async function getPersonalInfo(): Promise<PersonalInfo> {
         { name: 'Git', icon: 'git' },
         { name: 'Postman', icon: 'postman' },
         { name: 'Docker', icon: 'docker' },
+      ],
+      databases: [
+        { name: 'MySQL', icon: 'mysql' },
+        { name: 'PostgreSQL', icon: 'postgresql' },
+        { name: 'MongoDB', icon: 'mongodb' },
       ],
       other: [
         // { name: 'C++', icon: 'c++', category: 'Programación competitiva' },
