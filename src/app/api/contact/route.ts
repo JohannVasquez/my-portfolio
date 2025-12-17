@@ -1,7 +1,8 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
+import { serverEnv } from '@/config/env';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(serverEnv.resendApiKey);
 
 // Rate limiting simple: almacenar timestamps de requests por IP
 const rateLimitMap = new Map<string, number[]>();
@@ -81,7 +82,7 @@ export async function POST(request: Request) {
     const { name, email, message, honeypot, recaptchaToken } = body;
 
     // Verificar reCAPTCHA v3 (OBLIGATORIO)
-    if (!process.env.RECAPTCHA_SECRET_KEY) {
+    if (!serverEnv.recaptchaSecretKey) {
       console.error('❌ RECAPTCHA_SECRET_KEY no configurado en el servidor');
       return NextResponse.json(
         { error: 'Error de configuración del servidor. Contacto temporalmente no disponible.' },
@@ -105,7 +106,7 @@ export async function POST(request: Request) {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
-          body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
+          body: `secret=${serverEnv.recaptchaSecretKey}&response=${recaptchaToken}`,
         }
       );
 

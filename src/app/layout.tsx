@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { publicEnv } from "@/config/env";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -39,7 +40,7 @@ export default function RootLayout({
     <html lang="es">
       <head>
         <script
-          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+          src={`https://www.google.com/recaptcha/api.js?render=${publicEnv.recaptchaSiteKey}`}
           async
           defer
         />

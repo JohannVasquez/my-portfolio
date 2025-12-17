@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { publicEnv } from '@/config/env';
 
 const MAX_NAME_LENGTH = 100;
 const MAX_EMAIL_LENGTH = 254;
@@ -46,7 +47,7 @@ export function ContactForm() {
       if (typeof window !== 'undefined' && (window as any).grecaptcha) {
         try {
           recaptchaToken = await (window as any).grecaptcha.execute(
-            process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+            publicEnv.recaptchaSiteKey,
             { action: 'submit_contact' }
           );
         } catch (error) {
