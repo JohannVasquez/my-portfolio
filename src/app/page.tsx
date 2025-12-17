@@ -1,6 +1,7 @@
 import { Hero } from '@/components/Hero';
 import { SocialLinks } from '@/components/SocialLinks';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
+import { Contact } from '@/components/Contact';
 import { getPersonalInfo, getSocialLinks, getProjects } from '@/data/portfolio';
 
 export default async function Home() {
@@ -23,12 +24,15 @@ export default async function Home() {
         </div>
 
         {/* Projects Section */}
-        <section>
+        <section className="mb-24">
           <h2 className="text-3xl font-bold text-[#EAEAEA] mb-8">
             Proyectos
           </h2>
           <ProjectsGrid projects={projects} />
         </section>
+
+        {/* Contact Section */}
+        <Contact socialLinks={socialLinks} />
       </main>
     </div>
   );

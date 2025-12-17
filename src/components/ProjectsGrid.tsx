@@ -15,9 +15,13 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {projects.map((project) => (
-        <ProjectCard key={project.id} project={project} />
+    <div className="flex flex-col gap-12 lg:gap-16">
+      {projects.map((project, index) => (
+        <ProjectCard 
+          key={project.id} 
+          project={project} 
+          reversed={index % 2 !== 0}
+        />
       ))}
     </div>
   );

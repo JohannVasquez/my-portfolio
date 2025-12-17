@@ -5,7 +5,7 @@ export async function getPersonalInfo(): Promise<PersonalInfo> {
   return {
     name: 'Johann Vasquez',
     role: 'Software Engineer',
-    yearsOfExperience: 0, // Cambia este valor
+    yearsOfExperience: 1, // Cambia este valor
     technologies: {
       languages: [
         { name: 'Go', icon: 'go' },
@@ -53,34 +53,15 @@ export async function getSocialLinks(): Promise<SocialLink[]> {
 }
 
 export async function getProjects(): Promise<Project[]> {
-  // Replace with real data from API, CMS, or database
   return [
     {
       id: '1',
-      title: 'Proyecto 1',
-      description: 'Descripción del proyecto 1. Una aplicación web moderna desarrollada con las últimas tecnologías.',
-      imageUrl: '/placeholder-project.svg',
-      technologies: ['React', 'TypeScript', 'Next.js'],
-      projectUrl: 'https://ejemplo.com',
-      githubUrl: 'https://github.com/usuario/proyecto1',
-    },
-    {
-      id: '2',
-      title: 'Proyecto 2',
-      description: 'Descripción del proyecto 2. Sistema de gestión con backend robusto y UI intuitiva.',
-      imageUrl: '/placeholder-project.svg',
-      // videoUrl: '/placeholder-video.mp4', // Opcional: video demo
-      technologies: ['Node.js', 'PostgreSQL', 'Docker'],
-      projectUrl: 'https://ejemplo.com',
-      githubUrl: 'https://github.com/usuario/proyecto2',
-    },
-    {
-      id: '3',
-      title: 'Proyecto 3',
-      description: 'Descripción del proyecto 3. Aplicación móvil multiplataforma con diseño responsivo.',
-      imageUrl: '/placeholder-project.svg',
-      technologies: ['React Native', 'Firebase', 'Redux'],
-      projectUrl: 'https://ejemplo.com',
+      title: 'Validocu',
+      description: 'Plataforma para automatizar la validación de documentos como contratos mediante inteligencia artificial. Desarrollado entre abril y mediados de noviembre de 2025, fue presentado en la Feria de Software 2025 de la Universidad Técnica Federico Santa María en Valparaíso.',
+      imageUrl: '/Validocu-demo.png',
+      technologies: ['React', 'Laravel', 'FastAPI', 'PostgreSQL'],
+      projectUrl: 'https://validocu.feriadesoftware.cl',
+      // githubUrl: 'https://github.com/tu-usuario/validocu',
     },
   ];
 }
