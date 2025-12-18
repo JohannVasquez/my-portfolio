@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "Portafolio - Software Engineer",
   description: "Portafolio de desarrollador con experiencia en desarrollo web moderno. Explora mis proyectos y habilidades.",
   keywords: ["desarrollador", "portafolio", "web developer", "full stack", "react", "next.js"],
-  authors: [{ name: "Johann Vasquez" }],
+  authors: [{ name: "Johann Vásquez" }],
   openGraph: {
     title: "Portafolio - Software Engineer",
     description: "Portafolio de desarrollador con experiencia en desarrollo web moderno.",

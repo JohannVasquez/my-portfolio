@@ -4,7 +4,7 @@ import { calculateYearsOfExperience } from '@/utils/date';
 // Mock data - Replace with real data or fetch from API/Database
 export async function getPersonalInfo(): Promise<PersonalInfo> {
   return {
-    name: 'Johann Vasquez',
+    name: 'Johann Vásquez',
     role: 'Software Engineer',
     email: 'johannvasquez101@gmail.com',
     yearsOfExperience: calculateYearsOfExperience('2025-01-01'), // Calculado dinámicamente desde enero 2025
