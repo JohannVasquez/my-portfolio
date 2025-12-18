@@ -48,6 +48,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <script
           src={`https://www.google.com/recaptcha/api.js?render=${publicEnv.recaptchaSiteKey}`}
           async
