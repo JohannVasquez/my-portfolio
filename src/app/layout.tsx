@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(publicEnv.siteUrl),
   title: "Portafolio - Software Engineer",
   description: "Portafolio de desarrollador con experiencia en desarrollo web moderno. Explora mis proyectos y habilidades.",
   keywords: ["desarrollador", "portafolio", "web developer", "full stack", "react", "next.js"],
