@@ -1,5 +1,6 @@
 import type { PersonalInfo } from '@/domain/types/portfolio';
 import { TechStack } from './TechStack';
+import { DownloadCVButton } from './DownloadCVButton';
 import Image from 'next/image';
 import { formatYearsOfExperience } from '@/utils/date';
 
@@ -41,6 +42,11 @@ export function Hero({ personalInfo }: HeroProps) {
             <p className="text-[#5EEAD4]">
               Abierto a nuevos proyectos y colaboraciones.
             </p>
+          </div>
+          
+          {/* Download CV Button */}
+          <div className="mt-6 flex justify-center md:justify-start">
+            <DownloadCVButton />
           </div>
         </div>
       </div>

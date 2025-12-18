@@ -14,10 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(publicEnv.siteUrl),
   title: "Portafolio - Software Engineer",
   description: "Portafolio de desarrollador con experiencia en desarrollo web moderno. Explora mis proyectos y habilidades.",
   keywords: ["desarrollador", "portafolio", "web developer", "full stack", "react", "next.js"],
-  authors: [{ name: "Johann Vasquez" }],
+  authors: [{ name: "Johann Vásquez" }],
   openGraph: {
     title: "Portafolio - Software Engineer",
     description: "Portafolio de desarrollador con experiencia en desarrollo web moderno.",
@@ -48,6 +49,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <script
           src={`https://www.google.com/recaptcha/api.js?render=${publicEnv.recaptchaSiteKey}`}
           async

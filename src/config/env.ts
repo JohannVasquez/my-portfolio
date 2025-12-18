@@ -6,6 +6,7 @@
 // Variables públicas (disponibles en el cliente)
 export const publicEnv = {
   recaptchaSiteKey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
 } as const;
 
 // Variables privadas (solo disponibles en el servidor)
