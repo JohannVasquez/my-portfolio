@@ -1,6 +1,8 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 import { serverEnv } from '@/config/env';
+import { render } from '@react-email/render';
+import ContactEmail from '@/emails/ContactEmail';
 
 const resend = new Resend(serverEnv.resendApiKey);
 
@@ -33,20 +35,20 @@ function escapeHtml(text: string): string {
 function checkRateLimit(ip: string): boolean {
   const now = Date.now();
   const requests = rateLimitMap.get(ip) || [];
-  
+
   // Filtrar requests dentro de la ventana de tiempo
   const recentRequests = requests.filter(
     (timestamp) => now - timestamp < RATE_LIMIT_WINDOW
   );
-  
+
   if (recentRequests.length >= MAX_REQUESTS_PER_WINDOW) {
     return false;
   }
-  
+
   // Agregar nuevo timestamp
   recentRequests.push(now);
   rateLimitMap.set(ip, recentRequests);
-  
+
   // Limpiar entradas antiguas cada cierto tiempo
   if (rateLimitMap.size > 1000) {
     const oldestAllowed = now - RATE_LIMIT_WINDOW;
@@ -59,17 +61,17 @@ function checkRateLimit(ip: string): boolean {
       }
     }
   }
-  
+
   return true;
 }
 
 export async function POST(request: Request) {
   try {
     // Obtener IP del cliente
-    const ip = request.headers.get('x-forwarded-for') || 
-               request.headers.get('x-real-ip') || 
-               'unknown';
-    
+    const ip = request.headers.get('x-forwarded-for') ||
+      request.headers.get('x-real-ip') ||
+      'unknown';
+
     // Verificar rate limit
     if (!checkRateLimit(ip)) {
       return NextResponse.json(
@@ -197,26 +199,21 @@ export async function POST(request: Request) {
       );
     }
 
+    // Renderizar la plantilla de React Email
+    const emailHtml = await render(
+      ContactEmail({
+        name: sanitizedName,
+        email: sanitizedEmail,
+        message: sanitizedMessage,
+      })
+    );
+
     const { data, error } = await resend.emails.send({
       from: 'Portafolio <onboarding@resend.dev>',
       to: ['johannvasquez101@gmail.com'],
       replyTo: sanitizedEmail,
       subject: `Contacto de ${sanitizedName}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #2DD4BF;">Nuevo mensaje de contacto</h2>
-          <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <p><strong>Nombre:</strong> ${sanitizedName}</p>
-            <p><strong>Email:</strong> ${sanitizedEmail}</p>
-          </div>
-          <div style="margin: 20px 0;">
-            <h3 style="color: #333;">Mensaje:</h3>
-            <p style="line-height: 1.6; color: #555; white-space: pre-wrap;">${sanitizedMessage}</p>
-          </div>
-          <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
-          <p style="color: #999; font-size: 12px;">Este mensaje fue enviado desde tu portafolio web</p>
-        </div>
-      `,
+      html: emailHtml,
     });
 
     if (error) {
