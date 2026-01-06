@@ -20,7 +20,7 @@ export function Contact({ socialLinks, email }: ContactProps) {
   return (
     <section className="max-w-2xl mx-auto">
       <div className="text-center mb-8">
-        <h2 className="text-3xl lg:text-4xl font-bold text-[#EAEAEA] mb-4">
+        <h2 id="contact-heading" className="text-3xl lg:text-4xl font-bold text-[#EAEAEA] mb-4">
           Contacto
         </h2>
         <p className="text-[#A1A1AA] text-lg">

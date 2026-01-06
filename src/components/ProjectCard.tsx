@@ -8,10 +8,14 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, reversed = false }: ProjectCardProps) {
   return (
-    <article className="bg-[#181B23] rounded-lg overflow-hidden shadow-lg hover:shadow-[#2DD4BF]/20 transition-shadow duration-300">
+    <article
+      className="bg-[#181B23] rounded-lg overflow-hidden shadow-lg hover:shadow-[#2DD4BF]/20 transition-shadow duration-300"
+      itemScope
+      itemType="https://schema.org/CreativeWork"
+    >
       <div className={`flex flex-col ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-6 lg:gap-8`}>
         {/* Image Section */}
-        <div className="relative w-full lg:w-1/2 h-64 lg:h-96 flex-shrink-0">
+        <figure className="relative w-full lg:w-1/2 h-64 lg:h-96 flex-shrink-0">
           {project.videoUrl ? (
             <video
               className="w-full h-full object-contain bg-[#0F1115]"
@@ -20,31 +24,34 @@ export function ProjectCard({ project, reversed = false }: ProjectCardProps) {
               loop
               muted
               playsInline
+              aria-label={`Demo de ${project.title}`}
             >
               <Image
                 src={project.imageUrl}
-                alt={project.title}
+                alt={`Captura de pantalla del proyecto ${project.title}`}
                 fill
                 className="object-contain bg-[#0F1115]"
+                itemProp="image"
               />
             </video>
           ) : (
             <Image
               src={project.imageUrl}
-              alt={project.title}
+              alt={`Captura de pantalla del proyecto ${project.title}`}
               fill
               className="object-contain bg-[#0F1115]"
               sizes="(max-width: 1024px) 100vw, 50vw"
+              itemProp="image"
             />
           )}
-        </div>
+        </figure>
 
         {/* Content Section */}
         <div className="p-6 lg:p-8 flex flex-col justify-center w-full lg:w-1/2">
-          <h3 className="text-2xl lg:text-3xl font-bold text-[#EAEAEA] mb-4">
+          <h3 className="text-2xl lg:text-3xl font-bold text-[#EAEAEA] mb-4" itemProp="name">
             {project.title}
           </h3>
-          <p className="text-[#A1A1AA] mb-6 leading-relaxed text-base lg:text-lg">{project.description}</p>
+          <p className="text-[#A1A1AA] mb-6 leading-relaxed text-base lg:text-lg" itemProp="description">{project.description}</p>
           {project.technologies && project.technologies.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-6">
               {project.technologies.map((tech) => (
