@@ -1,0 +1,31 @@
+{
+    "name": "Johann Vásquez - Software Engineer",
+    "short_name": "Johann Vásquez",
+    "description": "Portafolio profesional de Johann Vásquez, Software Engineer especializado en React, Next.js, Go y Python.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0A0A0A",
+    "theme_color": "#2DD4BF",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "es-CL",
+    "dir": "ltr",
+    "categories": [
+        "portfolio",
+        "technology",
+        "development"
+    ],
+    "icons": [
+        {
+            "src": "/favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        },
+        {
+            "src": "/favicon.ico",
+            "sizes": "32x32",
+            "type": "image/x-icon"
+        }
+    ]
+}
