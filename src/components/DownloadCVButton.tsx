@@ -17,7 +17,11 @@ export function DownloadCVButton() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const handleDownload = (language: 'es' | 'en') => {
+  const handleDownloadMobile = (language: 'es' | 'en') => {
+    setIsOpen(false);
+  };
+
+  const handleDownloadDesktop = (language: 'es' | 'en') => {
     const fileName = language === 'es' ? 'CV-web-Johann-Vasquez-ES.pdf' : 'CV-web-Johann-Vasquez-EN.pdf';
     window.open(`/${fileName}`, '_blank');
     setIsOpen(false);
@@ -59,22 +63,53 @@ export function DownloadCVButton() {
       </button>
 
       {isOpen && (
-        <div className="absolute top-full mt-2 w-full min-w-[200px] bg-[#181B23] border border-[#2DD4BF]/20 rounded-lg shadow-xl shadow-[#2DD4BF]/10 overflow-hidden z-50 opacity-0 animate-fadeInDropdown">
-          <button
-            onClick={() => handleDownload('es')}
-            className="w-full px-4 py-3 text-left text-[#EAEAEA] hover:bg-[#2DD4BF]/10 transition-colors duration-200 flex items-center gap-2"
-          >
-            <span className="text-sm font-semibold text-[#2DD4BF]">ES</span>
-            Español
-          </button>
-          <button
-            onClick={() => handleDownload('en')}
-            className="w-full px-4 py-3 text-left text-[#EAEAEA] hover:bg-[#2DD4BF]/10 transition-colors duration-200 flex items-center gap-2 border-t border-[#2DD4BF]/10"
-          >
-            <span className="text-sm font-semibold text-[#2DD4BF]">EN</span>
-            English
-          </button>
-        </div>
+        <>
+          {/* Dropdown para móvil - Descarga directa */}
+          <div className="md:hidden absolute top-full mt-2 w-full min-w-[200px] bg-[#181B23] border border-[#2DD4BF]/20 rounded-lg shadow-xl shadow-[#2DD4BF]/10 overflow-hidden z-50 opacity-0 animate-fadeInDropdown">
+            <a
+              href="/CV-web-Johann-Vasquez-ES.pdf"
+              download="CV_Johann_Vasquez_ES.pdf"
+              onClick={() => handleDownloadMobile('es')}
+              className="w-full px-4 py-3 text-left text-[#EAEAEA] hover:bg-[#2DD4BF]/10 transition-colors duration-200 flex items-center gap-2"
+            >
+              <span className="text-sm font-semibold text-[#2DD4BF]">ES</span>
+              Español
+            </a>
+            <a
+              href="/CV-web-Johann-Vasquez-EN.pdf"
+              download="CV_Johann_Vasquez_EN.pdf"
+              onClick={() => handleDownloadMobile('en')}
+              className="w-full px-4 py-3 text-left text-[#EAEAEA] hover:bg-[#2DD4BF]/10 transition-colors duration-200 flex items-center gap-2 border-t border-[#2DD4BF]/10"
+            >
+              <span className="text-sm font-semibold text-[#2DD4BF]">EN</span>
+              English
+            </a>
+          </div>
+
+          {/* Dropdown para desktop - Abrir en nueva pestaña */}
+          <div className="hidden md:block absolute top-full mt-2 w-full min-w-[200px] bg-[#181B23] border border-[#2DD4BF]/20 rounded-lg shadow-xl shadow-[#2DD4BF]/10 overflow-hidden z-50 opacity-0 animate-fadeInDropdown">
+            <a
+              href="/CV-web-Johann-Vasquez-ES.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => handleDownloadDesktop('es')}
+              className="w-full px-4 py-3 text-left text-[#EAEAEA] hover:bg-[#2DD4BF]/10 transition-colors duration-200 flex items-center gap-2"
+            >
+              <span className="text-sm font-semibold text-[#2DD4BF]">ES</span>
+              Español
+            </a>
+            <a
+              href="/CV-web-Johann-Vasquez-EN.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => handleDownloadDesktop('en')}
+              className="w-full px-4 py-3 text-left text-[#EAEAEA] hover:bg-[#2DD4BF]/10 transition-colors duration-200 flex items-center gap-2 border-t border-[#2DD4BF]/10"
+            >
+              <span className="text-sm font-semibold text-[#2DD4BF]">EN</span>
+              English
+            </a>
+          </div>
+        </>
       )}
     </div>
   );

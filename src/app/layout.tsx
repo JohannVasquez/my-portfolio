@@ -26,7 +26,7 @@ const authorInfo = {
   email: "johannvasquez101@gmail.com",
   description:
     "Software Engineer especializado en desarrollo web moderno. Estudiante de último semestre en la Universidad Técnica Federico Santa María, experto en React, Next.js, Go, Python y PostgreSQL.",
-  image: "/profile.jpg",
+  image: "/profile.webp",
   sameAs: [
     "https://www.linkedin.com/in/johann-vasquez-bello/",
     "https://github.com/JohannVasquez",
@@ -118,7 +118,7 @@ export const metadata: Metadata = {
         type: "image/png",
       },
       {
-        url: "/profile.jpg",
+        url: "/profile.webp",
         width: 800,
         height: 800,
         alt: "Johann Vásquez - Foto de perfil",
