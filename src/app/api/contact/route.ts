@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import { serverEnv } from '@/config/env';
 import { render } from '@react-email/render';
 import ContactEmail from '@/emails/ContactEmail';
+import ConfirmationEmail from '@/emails/ConfirmationEmail';
 
 const resend = new Resend(serverEnv.resendApiKey);
 
@@ -199,31 +200,57 @@ export async function POST(request: Request) {
       );
     }
 
-    // Renderizar la plantilla de React Email
-    const emailHtml = await render(
-      ContactEmail({
-        name: sanitizedName,
-        email: sanitizedEmail,
-        message: sanitizedMessage,
-      })
-    );
+    // Renderizar las plantillas de React Email
+    const [notificationEmailHtml, confirmationEmailHtml] = await Promise.all([
+      render(
+        ContactEmail({
+          name: sanitizedName,
+          email: sanitizedEmail,
+          message: sanitizedMessage,
+        })
+      ),
+      render(
+        ConfirmationEmail({
+          name: sanitizedName,
+        })
+      ),
+    ]);
 
-    const { data, error } = await resend.emails.send({
-      from: 'Portafolio <onboarding@resend.dev>',
-      to: ['johannvasquez101@gmail.com'],
-      replyTo: sanitizedEmail,
-      subject: `Contacto de ${sanitizedName}`,
-      html: emailHtml,
-    });
+    // Enviar ambos correos simultáneamente con Promise.all
+    const [notificationResult, confirmationResult] = await Promise.all([
+      // Correo de notificación (para mí)
+      resend.emails.send({
+        from: 'Portafolio Contact <contacto@jvdev.cl>',
+        to: ['johann@jvdev.cl'],
+        replyTo: sanitizedEmail,
+        subject: `Nuevo mensaje de ${sanitizedName}`,
+        html: notificationEmailHtml,
+      }),
+      // Correo de confirmación (para el usuario)
+      resend.emails.send({
+        from: 'Johann Vásquez <johann@jvdev.cl>',
+        to: [sanitizedEmail],
+        subject: '¡Recibí tu mensaje!',
+        html: confirmationEmailHtml,
+      }),
+    ]);
 
-    if (error) {
-      // Log interno sin exponer detalles al cliente
-      console.error('Error al enviar email:', error);
+    // Verificar errores en ambos correos
+    if (notificationResult.error || confirmationResult.error) {
+      console.error('Error al enviar emails:', {
+        notification: notificationResult.error,
+        confirmation: confirmationResult.error,
+      });
       return NextResponse.json(
         { error: 'Error al enviar el mensaje. Por favor, intenta nuevamente.' },
         { status: 500 }
       );
     }
+
+    console.log('✅ Correos enviados exitosamente:', {
+      notificationId: notificationResult.data?.id,
+      confirmationId: confirmationResult.data?.id,
+    });
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
