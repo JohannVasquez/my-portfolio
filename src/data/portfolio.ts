@@ -66,7 +66,7 @@ export async function getProjects(): Promise<Project[]> {
       id: '1',
       title: 'Validocu',
       description: 'Plataforma para automatizar la validación de documentos como contratos mediante inteligencia artificial. Desarrollado entre abril y mediados de noviembre de 2025, fue presentado en la Feria de Software 2025 de la Universidad Técnica Federico Santa María en Valparaíso.',
-      imageUrl: '/Validocu-demo.png',
+      imageUrl: '/Validocu-demo.webp',
       technologies: ['React', 'Laravel', 'FastAPI', 'PostgreSQL'],
       projectUrl: 'https://validocu.feriadesoftware.cl',
       // githubUrl: 'https://github.com/tu-usuario/validocu',

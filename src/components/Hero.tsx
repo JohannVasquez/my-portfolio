@@ -22,7 +22,7 @@ export function Hero({ personalInfo }: HeroProps) {
         {/* Profile Image */}
         <figure className="relative w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-[#2DD4BF] shadow-lg shadow-[#2DD4BF]/20 flex-shrink-0">
           <Image
-            src="/profile.jpg"
+            src="/profile.webp"
             alt={`Foto de perfil de ${name}, ${role}`}
             fill
             className="object-cover"
